@@ -9,13 +9,24 @@ Router.route('/', {
 });
 
 Router.route('/horses', {
-  controller: 'HorseController',
-  action: 'index'
+  this.redirect('/');
 });
 
 Router.route('/horses/:_id', {
   controller: 'HorseController',
   action: 'show'
+});
+
+Template.HorseShow.helpers({
+  imagePath: function () { // data context set to profile
+    return "images/horse" + this._id + ".jpg";
+  }
+});
+
+Template.HorseIndex.helpers({
+  imagePath: function () { // data context set to profile
+    return "images/horsethumb" + this._id + ".jpg";
+  }
 });
 
 if (Meteor.isClient) {
@@ -24,29 +35,26 @@ if (Meteor.isClient) {
   ApplicationController = RouteController.extend({
     layoutTemplate: 'AppLayout',
 
-/*    onBeforeAction: function () {
-      console.log('app before hook!');
-      this.next();
-    },
-*/
-    action: function () {
-      console.log('this should be overridden!');
-    }
   });
 
   HorseController = ApplicationController.extend({
 
     show: function () {
-      var id = this.params._id;
+      // get one horse
       this.render('HorseShow', {
-        data: {
-          horse_id: this.params._id
+        data: function() {
+          return Horses.findOne( this.params._id );
         }
       });
     },
 
     index: function () {
-      this.render('HorseIndex');
+      // get all the horses
+      this.render('HorseIndex', {
+        data: function() {
+          return Horses.find();
+        }
+      });
     }
 
   });

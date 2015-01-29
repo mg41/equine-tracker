@@ -21,31 +21,27 @@
       {{> yield}}
     </article>
   </div>
+  
   <footer>
-    {{> yield "footer"}}
+    Footer stuff here
   </footer>
 </template>
 
-<template name="Home">
-  <h1>Home</h1>
-	
-	{{#contentFor "footer"}}
-    Home Footer
-  {{/contentFor}}
-</template>
 
 <template name="HorseIndex">
   <h1>All Horses</h1>
+  
+  <p>{{herd_size}} horses available.</p>
 
-  {{#contentFor "footer"}}
-    All Horses Footer
-  {{/contentFor}}
 </template>
 
 <template name="HorseShow">
-  <h1>Horse {{horse_id}}</h1>
+  {{#with horse}}
+    <h1>Horse {{horse_id}}</h1>
 
-  {{#contentFor "footer"}}
-    Single Horse Footer
-  {{/contentFor}}
+    <img src="{{imagePath}}" />
+  {{/with}}
 </template>
+
+
+

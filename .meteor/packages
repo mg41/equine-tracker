@@ -5,9 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 accounts-ui
 accounts-password
-ewall:foundation
 iron:router
+underscore
+mizzao:bootstrap-3
