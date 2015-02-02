@@ -1,8 +1,13 @@
 <template name="horseItem">
   <div class="post">
     <div class="post-content">
-      <h3>{{name}}</h3>
+      
       <img src="/images/{{thumbURL}}" />
+
+      <div class="details-display">
+      	<h3>{{name}}</h3>
+      	<a href="{{pathFor 'horsePage'}}" class="horse-detail btn btn-default">View</a>
+    	</div>
     </div>
   </div>
 </template>
