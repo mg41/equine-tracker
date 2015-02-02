@@ -17,10 +17,7 @@ var horsesData = [
 ];
 
 Template.horsesList.helpers({
-  horses: horsesData,
-  domain: function() {
-    var a = document.createElement('a');
-    a.href = this.url;
-    return a.hostname;
+  horses: function() {
+    return Horses.find();
   }
 });
