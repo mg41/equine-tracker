@@ -1,11 +1,7 @@
 <template name="layout">
   <h1>Equine Tracker</h1>
   <div class="container">
-    <header class="navbar navbar-default" role="navigation"> 
-      <div class="navbar-header">
-        <a class="navbar-brand" href="{{pathFor 'horsesList'}}">All Horses</a>
-      </div>
-    </header>
+    {{> header}}
     <div id="main" class="row-fluid">
       {{> yield}}
     </div>
